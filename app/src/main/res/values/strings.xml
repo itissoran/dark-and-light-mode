@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="long_text">On GitHub, navigate to the main page of the repository. Under the repository name, click Clone or download. In the Clone with HTTPs section, click to copy the clone URL for the repository. Open Git Bash. Change the current working directory to the location where you want the cloned directory to be made</string>
+</resources>
