@@ -10,9 +10,11 @@ import android.widget.Switch;
 
 public class MainActivity extends AppCompatActivity {
 Switch mySwitch;
+Sharedpref sharedpref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if (AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+        sharedpref =new Sharedpref(this);
+        if (sharedpref.loadNightModeState()==true){
             setTheme(R.style.darkTheme);
         }
         else {
@@ -24,18 +26,18 @@ Switch mySwitch;
 
 
         mySwitch=findViewById(R.id.mySwich);
-        if (AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+        if (sharedpref.loadNightModeState()==true){
             mySwitch.setChecked(true);
         }
         mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    sharedpref.setNightMode(true);
                     restartApp();
                 }
                 else {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    sharedpref.setNightMode(false);
                     restartApp();
 
                 }
